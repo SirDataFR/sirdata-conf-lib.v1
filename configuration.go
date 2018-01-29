@@ -267,6 +267,9 @@ func (c *Checker) enumValueCondition(entry *string, values []string) Condition {
 	return condition{
 		func() string { return fmt.Sprintf("value of %s must be in %s", c.tagKeyOrValue(entry), values) },
 		func() bool {
+			if *entry == "" {
+				return true
+			}
 			for _, value := range values {
 				if value == *entry {
 					return true
