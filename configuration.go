@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	INT_UNDEFINED = -1
+	intUndefined = -1
 )
 
 type Checker struct {
@@ -281,12 +281,12 @@ func (c *Checker) enumValueCondition(entry *string, values []string) Condition {
 }
 
 func (c *Checker) IntMandatory(entry *int) {
-	c.IntCondition(func() bool { return *entry != INT_UNDEFINED }, c.describeMandatory(entry))
+	c.IntCondition(func() bool { return *entry != intUndefined }, c.describeMandatory(entry))
 }
 
 func (c *Checker) IntMandatoryWhen(entry *int, when Condition) {
 	c.IntCondition(
-		func() bool { return *entry != INT_UNDEFINED || !when.Evaluate() },
+		func() bool { return *entry != intUndefined || !when.Evaluate() },
 		c.describeWhen(c.describeMandatory(entry), when))
 }
 
